@@ -34,6 +34,7 @@
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
+  <script src="js/clipboard.min.js"></script>
 
   <div id="overlayer"></div>
   <div class="loader">
@@ -43,7 +44,7 @@
   </div>
 
 
-  <div class="site-wrap">
+  <div class="site-wrap" id="home">
 
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
@@ -62,7 +63,7 @@
 
           <div class="col-6 col-xl-2">
             <div class="mb-0 site-logo">
-              <a href="index.html" class="mb-0"> 
+              <a href="#home" class="mb-0"> 
                 <img src="images/cardano.png" width="20px" height="20px" class="site-logo-icon"> Cardano
               </a>
             </div>
@@ -72,7 +73,7 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="active"><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#statistics" class="nav-link">Statistics</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#announcements" class="nav-link">Announcements</a></li>
@@ -95,11 +96,11 @@
           <div class="col-lg-6 mr-auto text-center text-lg-left">
             <span class="d-block subheading">Cardano Staking pool</span>
             <h1 class="heading mb-3">Sweet ADA</h1>
-            <p class="mb-5">Become a delegator to the sweetest pool in the community and receive bonus ADA every time that the pool generates rewards. (minimum delegation of 5000 ₳ for the bonus)</p>
+            <p class="mb-5">Become a delegator to the sweetest pool in the community and receive bonus ADA every time that the pool generates rewards.</p>
             <p class="mb-4"><a href="#about" class="btn btn-primary"><b>Start delegating</b></a> <a href="#about" class="btn"><b>Why delegating with us?</b></a></p>
 
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 d-none d-md-none d-lg-block">
             <figure class="illustration">
               <img src="images/illustration.png" alt="Image" class="img-fluid">
             </figure>
@@ -111,13 +112,26 @@
 
 
     <!-- MAIN -->
+
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    $.getJSON('https://js.adapools.org/pools/fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1/summary.json', function(data) { 
+    $.each( data.data, function( i, val ) { 
+        a=new Array('tax_fix','pledge','total_stake');
+        if(a.includes(i))  val=Math.round(parseInt(val)/1000000);
+        if(i=='blocks_lifetime') val=parseInt(val) + parseInt(data.data.blocks_epoch);
+
+        $('#fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1_'+i).html(val).text();   
+    }); 
+        });
+    </script>
     
     <div class="site-section stats" id="statistics">
       <div class="container">
         <div class="row mb-3">
           <div class="col-lg-7 text-center mx-auto">
             <h2 class="section-heading">Pool Statistics</h2>
-            <p>Automatically updated from <a href="http://adapools.org">adapools.org</a>.</p>
+            <p>Automatically updated from <a href="https://adapools.org/pool/fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1" target="_blank">adapools.org</a>.</p>
           </div>
         </div>
         <div class="row"> 
@@ -137,8 +151,9 @@
                 <br/>
                 <span class="fas fa-piggy-bank"></span>
               </span>
-              <strong class="d-block number">6000 ₳</strong>
-              <span class="label">Pledge + Stake</span>
+              <strong class="d-block number">
+                <span class="pledge" id="fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1_total_stake">5000</span> ₳</strong>
+              <span class="label">Total stake</span>
             </div>
           </div>
           <div class="col-lg-4">
@@ -208,7 +223,7 @@
           </div>
           <div class="col-lg-5 ml-auto" id="start">
             <h2 class="section-heading mb-4">How to delegate</h2>
-            <p>Ready to delegate? Then open your <a href="https://daedaluswallet.io/">Daedalus</a> or <a href="https://yoroi-wallet.com/">Yoroi</a> wallet. All you need to do is go to the delegation center, then stake pools, and search for our ticker <b>SWEET</b>. If you still can't find our pool, copy our pool ID by clicking the button bellow.</p>
+            <p>Ready to delegate? Just open your <a href="https://daedaluswallet.io/" target="_blank">Daedalus</a> or <a href="https://yoroi-wallet.com/" target="_blank">Yoroi</a> wallet. All you need to do is go to the delegation center, then stake pools, and search for our ticker <b>SWEET</b>. If you still can't find our pool, copy our pool ID by clicking the button bellow.</p>
            <!--  <p class="mb-4">After delegating to our pool</p>
 
             <ul class="list-check list-unstyled mb-5">
@@ -217,7 +232,20 @@
               <li>Unde doloremque</li>
             </ul> -->
 
-            <p><a href="#" class="btn btn-primary"><b>Copy pool ID to clipboard</b></a></p>
+            <script>
+              var clipboard = new ClipboardJS('.btn');
+
+              clipboard.on('success', function (e) {
+                console.log(e);
+              });
+
+              clipboard.on('error', function (e) {
+                console.log(e);
+              });
+            </script>
+
+            <p><button class="btn btn-primary" data-clipboard-text="pool1l0f7d56gwgdyct6vev88mnuf4ankx2fpm53plr8g6rd6zxz6del"><b>Copy pool ID to clipboard</b></button></p>
+
           </div>
         </div>
       </div>
@@ -266,15 +294,15 @@
               <div class="col-lg-4">
                 <h2 class="footer-heading mb-4">Helpful Links</h2>
                 <ul class="list-unstyled">
-                  <li><a href="https://daedaluswallet.io/">Daedalus Wallet</a></li>
-                  <li><a href="https://yoroi-wallet.com/">Yoroi Wallet</a></li>
+                  <li><a href="https://daedaluswallet.io/" target="_blank">Daedalus Wallet</a></li>
+                  <li><a href="https://yoroi-wallet.com/" target="_blank">Yoroi Wallet</a></li>
                 </ul>
               </div>
               <div class="col-lg-4">
                 <h2 class="footer-heading mb-4">Resources</h2>
                 <ul class="list-unstyled">
-                  <li><a href="https://iohk.io/">IOHK Website</a></li>
-                  <li><a href="https://cardano.org/">Cardano Website</a></li>
+                  <li><a href="https://iohk.io/" target="_blank">IOHK Website</a></li>
+                  <li><a href="https://cardano.org/" target="_blank">Cardano Website</a></li>
                 </ul>
               </div>
             </div>
@@ -295,6 +323,16 @@
     </div>
 
   </div> <!-- .site-wrap -->
+
+<!--   <script>
+    $("span").on('DOMSubtreeModified', function () {
+      var sum = 0;
+      $('.pledge').each(function() {
+        sum += +$(this).text()||0;
+      });
+      $("#stake").text(sum);
+    });
+  </script> -->
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
