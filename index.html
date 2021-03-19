@@ -96,8 +96,8 @@
           <div class="col-lg-6 mr-auto text-center text-lg-left">
             <span class="d-block subheading">Cardano Staking pool</span>
             <h1 class="heading mb-3">Sweet ADA</h1>
-            <p class="mb-5">Become a delegator to the sweetest pool in the community and receive bonus ADA every time that the pool generates rewards.</p>
-            <p class="mb-4"><a href="#about" class="btn btn-primary"><b>Start delegating</b></a> <a href="#about" class="btn"><b>Why delegating with us?</b></a></p>
+            <p class="mb-5">Join us with a stake of 10000 ₳ or more and become one of the partners in the sweetest pool in the community, receiving a parcentage of the pool profits on top of your regular staking rewards.</p>
+            <p class="mb-4"><a href="#about" class="btn btn-primary"><b>Start delegating</b></a> <a href="#about" class="btn"><b>How it works?</b></a></p>
 
           </div>
           <div class="col-lg-6 d-none d-md-none d-lg-block">
@@ -139,10 +139,10 @@
             <div class="data">
               <span class="icon text-primary">
                 <br/>
-                <span class="fas fa-globe-africa"></span>
+                <span class="fas fa-tag"></span>
               </span>
-              <strong class="d-block number">99,97%</strong>
-              <span class="label">Uptime</span>
+              <strong class="d-block number">SWEET</strong>
+              <span class="label">Ticker</span>
             </div>
           </div>
           <div class="col-lg-4">
@@ -152,7 +152,7 @@
                 <span class="fas fa-piggy-bank"></span>
               </span>
               <strong class="d-block number">
-                <span class="pledge" id="fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1_total_stake">5000</span> ₳</strong>
+                <span class="pledge" id="fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1_total_stake">-</span> ₳</strong>
               <span class="label">Total stake</span>
             </div>
           </div>
@@ -183,7 +183,7 @@
                   </div>
                   <div class="body">
                     <h3>Extra rewards</h3>
-                    <p>Apart from your regular staking rewards, you will also receive pool rewards which we will be shared between our delegators! After reducing server costs, the pool rewards will be distributed proportionally to each delegator based on their stake. The minimum stake to receive your extra reward is 5000 ₳.</p>
+                    <p>We are treating our first delegators as partners, where apart from your regular staking rewards, you will also receive pool rewards! After subtracting server costs, the pool rewards will be distributed proportionally to each delegator based on their stake. The minimum stake to be a partner and receive your extra reward is 10000 ₳.</p>
                   </div>
                 </div>
 
@@ -232,19 +232,28 @@
               <li>Unde doloremque</li>
             </ul> -->
 
+            <p><button class="btn btn-primary" data-clipboard-text="pool1l0f7d56gwgdyct6vev88mnuf4ankx2fpm53plr8g6rd6zxz6del"><b>Copy pool ID to clipboard</b></button></p>
+
+            <div id="copyAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+              The pool identifier has been copied to your clipboard.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
             <script>
               var clipboard = new ClipboardJS('.btn');
 
+              $("#copyAlert").hide();
               clipboard.on('success', function (e) {
-                console.log(e);
+                $("#copyAlert").show(100);
+                                console.log(e);
               });
 
               clipboard.on('error', function (e) {
                 console.log(e);
               });
             </script>
-
-            <p><button class="btn btn-primary" data-clipboard-text="pool1l0f7d56gwgdyct6vev88mnuf4ankx2fpm53plr8g6rd6zxz6del"><b>Copy pool ID to clipboard</b></button></p>
 
           </div>
         </div>
