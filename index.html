@@ -168,8 +168,8 @@
                 <span class="fas fa-piggy-bank"></span>
               </span>
               <strong class="d-block number">
-                <span class="pledge" id="fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1_total_stake">-</span> ₳</strong>
-              <span class="label">Total stake</span>
+                <span class="pledge" id="fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1_total_stake" hidden="true"></span><span id="stake">Loading...</span> ₳</strong>
+              <span class="label">Live stake</span>
             </div>
           </div>
           <div class="col-lg-4">
@@ -416,15 +416,15 @@
 
   </div> <!-- .site-wrap -->
 
-<!--   <script>
+  <script>
     $("span").on('DOMSubtreeModified', function () {
-      var sum = 0;
       $('.pledge').each(function() {
-        sum += +$(this).text()||0;
+        var stake = $(this).text();
+        var formatted = new Intl.NumberFormat('en-US').format(stake);
+        $("#stake").text(formatted);
       });
-      $("#stake").text(sum);
     });
-  </script> -->
+  </script>
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
