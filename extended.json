@@ -14,7 +14,7 @@
         },
         "about": {
             "me": "",
-            "server": "Hosted on award winning cloud computing providers, with reduntant relays and distirbuted over 2 different continents, we can guarantee an uptime of more than 99.9%, as this infrastructure also enables us to perform updates and do maintenance without the need to bring the nodes down.",
+            "server": "Hosted on award winning cloud service providers, with reduntant relays and distributed over 2 different continents, we can guarantee an uptime of more than 99.99%. This results in a pool that does not miss blocks or becomes offline, even during updates.",
             "company": ""
         },
         "rss": ""
