@@ -92,7 +92,6 @@
                 <li><a href="#statistics" class="nav-link">Statistics</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#announcements" class="nav-link">Announcements</a></li>
-                <li><a href="#partnership" class="nav-link">Partnership</a></li>
                 <li><a href="mailto:sweetadapool@gmail.com" target="_blank" class="nav-link">Contact</a></li>
               </ul>
             </nav>
@@ -112,8 +111,8 @@
           <div class="col-lg-6 mr-auto text-center text-lg-left">
             <span class="d-block subheading">Cardano Staking pool</span>
             <h1 class="heading mb-3">Sweet ADA</h1>
-            <p class="mb-5">Join us with a stake of 100000 ₳ or more and become one of the partners in the sweetest pool in the community, receiving a parcentage of the pool profits on top of your regular staking rewards.</p>
-            <p class="mb-4"><a href="#about" class="btn btn-primary"><b>Start delegating</b></a> <a href="#partnership" class="btn"><b>How it works?</b></a></p>
+            <p class="mb-5">Reliable and secure servers at only 1% fee.<br/>Join us in the sweetest pool in the community.</p>
+            <p class="mb-4"><a href="#about" class="btn btn-primary"><b>Start delegating</b></a> <a href="#about" class="btn"><b>More info</b></a></p>
 
           </div>
           <div class="col-lg-6 d-none d-md-none d-lg-block">
@@ -195,21 +194,21 @@
               <div class="col-6 col-lg-6 mt-lg-5">
                 <div class="media-v1 bg-1">
                   <div class="icon-wrap">
-                    <span class="fas fa-hand-holding-usd"></span>
+                    <span class="fas fa-piggy-bank"></span>
                   </div>
                   <div class="body">
-                    <h3>Extra rewards</h3>
-                    <p>We are treating our first delegators as partners, where apart from your regular staking rewards, you will also receive pool rewards! After subtracting server costs, the pool rewards will be distributed proportionally to each delegator based on their stake. The minimum stake to be a partner and receive your extra reward is 100000 ₳.</p>
+                    <h3>Growing pledge</h3>
+                    <p>As late joiners in the cardano community, we are not able to start off with an enormous pledge, but we will continue adding more ADA making it more competitive over time.</p>
                   </div>
                 </div>
 
                 <div class="media-v1 bg-1">
                   <div class="icon-wrap">
-                    <span class="fas fa-piggy-bank"></span>
+                    <span class="fas fa-project-diagram"></span>
                   </div>
                   <div class="body">
-                    <h3>Growing pledge</h3>
-                    <p>As late joiners in the cardano community, we are not able to start off with an enormous pledge, but we will continue adding more ADA so it becomes more competitive.</p>
+                    <h3>Decentralization</h3>
+                    <p>By delegating to a small pool, you are making a contribution to a decentralized Cardano ecosystem, while still generating similar returns to the ones from big staking pool groups.</p>
                   </div>
                 </div>
               </div>
@@ -230,7 +229,7 @@
                   </div>
                   <div class="body">
                     <h3>Reliable servers</h3>
-                    <p>Hosted on award winning cloud computing providers, with reduntant relays and distirbuted over 2 different continents, we can guarantee an uptime of more than 99.9%. This infrastructure also enables us to perform updates and do maintenance without the need to bring the nodes down.</p>
+                    <p>Hosted on award winning cloud service providers, with reduntant relays and distirbuted over 2 different continents, we can guarantee an uptime of more than 99.99%. This results in a node that does not miss blocks and does become offline, even during updates.</p>
                   </div>
                 </div>
               </div>
@@ -289,7 +288,8 @@
 
     <script>
       TweetJs.ListTweetsOnUserTimeline("sweetadapool", function (data) {
-        data.slice(0, 5).forEach(function(tweet) {
+                  console.log(data);
+        data.filter( tweet => tweet.in_reply_to_user_id == null).slice(0, 5).forEach(function(tweet) {
           $( "#tweetsContainer" ).append( `
             <div class="row justify-content-md-center">
               <div class="col-lg-8 mb-4">
@@ -308,69 +308,6 @@
         });
       });
     </script>
-
-    <div class="site-section bg-primary-light" id="partnership">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="mb-4 section-heading">Pool partnership</h2>
-            <p>By delegating an amount of 100000 ₳ or more you will automatically become a partner of the SWEET staking pool. The rewards are distributed after we subtract 75 ₳ from the fixed pool costs and 10% of the pool rewards. The table below gives an example of the approximate earnings in case the pool mints a single block in the epoch, considering an aproximate block reward of 850 ₳.</p>
-            <br/>
-          </div>
-
-          <div class="col-lg-8 mx-auto text-center">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Partner</th>
-                  <th scope="col">Stake</th>
-                  <th scope="col">Shares</th>
-                  <th scope="col">Bonus rewards</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>A</td>
-                  <td>700000.00 ₳</td>
-                  <td>42 %</td>
-                  <td>114.87 ₳</td>
-                </tr>
-                <tr>
-                  <td>B</td>
-                  <td>400000.00 ₳</td>
-                  <td>24 %</td>
-                  <td>65.64 ₳</td>
-                </tr>
-                <tr>
-                  <td>C</td>
-                  <td>300000.00 ₳</td>
-                  <td>18 %</td>
-                  <td>49.23 ₳</td>
-                </tr>
-                <tr>
-                  <td>D</td>
-                  <td>100000.00 ₳</td>
-                  <td>6 %</td>
-                  <td>16.41 ₳</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="col-lg-8 mx-auto text-center">
-            <p>Our give back approach will already match the returns you could get delegating on the top 5 pools. Your return of investment will only increase in epochs that we have the luck to mint more than one block, and you will continue receiving the extra rewards as the pool grows. In order to not dilute our partners shares, we wont be accepting new partners after the pool reaches more than 1,8 million ADA staked. Feel free to <a href="mailto:sweetadapool@gmail.com" target="_blank">contact us</a> in case you have questions.</p>
-            <br/>
-          </div>
-
-          <div class="col-lg-8 mx-auto text-center">
-            <p><a href="#start" class="btn btn-primary"><b>Start delegating</b></a></p>
-            <br/>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
 
     <div class="site-footer">
       <div class="container">
