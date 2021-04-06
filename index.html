@@ -134,10 +134,13 @@
     $.getJSON('https://js.adapools.org/pools/fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1/summary.json', function(data) { 
     $.each( data.data, function( i, val ) { 
         a=new Array('tax_fix','pledge','total_stake');
-        if(a.includes(i))  val=Math.round(parseInt(val)/1000000);
+        if(a.includes(i)) {
+          val = Math.round(parseInt(val)/1000000);
+          val = new Intl.NumberFormat('en-US').format(val);
+        }
         if(i=='blocks_lifetime') val=parseInt(val) + parseInt(data.data.blocks_epoch);
 
-        $('#fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1_'+i).html(val).text();   
+        $('#adapools_'+i).html(val).text();   
     }); 
         });
     </script>
@@ -151,7 +154,7 @@
           </div>
         </div>
         <div class="row"> 
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="data">
               <span class="icon text-primary">
                 <br/>
@@ -161,18 +164,29 @@
               <span class="label">Ticker</span>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="data">
               <span class="icon text-primary">
                 <br/>
                 <span class="fas fa-piggy-bank"></span>
               </span>
               <strong class="d-block number">
-                <span class="pledge" id="fbd3e6d348721a4c2f4ccb0e7dcf89af67632921dd221f8ce8d0dba1_total_stake" hidden="true"></span><span id="stake">Loading...</span> ₳</strong>
-              <span class="label">Live stake</span>
+                <span class="stake" id="adapools_total_stake"></span> ₳</strong>
+              <span class="label">Total stake</span>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-3">
+            <div class="data">
+              <span class="icon text-primary">
+                <br/>
+                <span class="fas fa-wallet"></span>
+              </span>
+              <strong class="d-block number">
+                <span class="stake" id="adapools_pledge"></span> ₳</strong>
+              <span class="label">Pledge</span>
+            </div>
+          </div>
+          <div class="col-lg-3">
             <div class="data">
               <span class="icon text-primary">
                 <br/>
@@ -198,8 +212,8 @@
                     <span class="fas fa-piggy-bank"></span>
                   </div>
                   <div class="body">
-                    <h3>Growing pledge</h3>
-                    <p>As late joiners in the cardano community, we are not able to start off with an enormous pledge, but we will continue adding more ADA to it, making it more competitive over time.</p>
+                    <h3>Competitive pledge</h3>
+                    <p>With more than 700k ADA pledged, our pool differentiates from other pools, and guarantees a higher chance of generating blocks due to the pledge influence factor.</p>
                   </div>
                 </div>
 
@@ -290,7 +304,7 @@
     <script>
       TweetJs.ListTweetsOnUserTimeline("sweetadapool", function (data) {
                   console.log(data);
-        data.filter( tweet => tweet.in_reply_to_user_id == null).slice(0, 5).forEach(function(tweet) {
+        data.filter( tweet => tweet.in_reply_to_user_id == null && tweet.text.substring(0, 2) != "RT").slice(0, 5).forEach(function(tweet) {
           $( "#tweetsContainer" ).append( `
             <div class="row justify-content-md-center">
               <div class="col-lg-8 mb-4">
@@ -354,13 +368,13 @@
 
   </div> <!-- .site-wrap -->
 
-  <script>
+<!--   <script>
     $(".pledge").on('DOMSubtreeModified', function () {
       var stake = $('.pledge').text();
       var formatted = new Intl.NumberFormat('en-US').format(stake);
       $("#stake").text(formatted);
     });
-  </script>
+  </script> -->
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
